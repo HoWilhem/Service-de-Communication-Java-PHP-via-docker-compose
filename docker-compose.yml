@@ -1,0 +1,22 @@
+services:
+  rentalservice:
+    build:
+      context: ./RentalService
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    depends_on:
+      - phpservice
+
+  phpservice:
+    build:
+      context: ./PHPService
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge

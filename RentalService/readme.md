@@ -77,3 +77,23 @@ docker run -p 8080:8080 rentalservice
 ```
 
 Voir le résultat à l'adresse :http://localhost:8080/bonjour
+
+## Publier l'image dans Docker Hub
+
+Se connecter au Docker Hub
+
+```bash
+docker login
+```
+
+Faire un tag de l'image :
+
+```bash
+docker tag rentalservice 88wiwi/rentalservice:latest
+```
+
+Faire un push de l'image dans le Hub:
+
+```bash
+docker push 88wiwi/rentalservice:latest
+```
