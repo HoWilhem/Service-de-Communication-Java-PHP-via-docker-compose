@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingnum
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rentalservice
+  namespace: ingnum
+  labels:
+    app: rentalservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rentalservice
+  template:
+    metadata:
+      labels:
+        app: rentalservice
+    spec:
+      containers:
+        - name: rentalservice
+          image: ingnum/rentalservice:latest
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rentalservice
+  namespace: ingnum
+spec:
+  selector:
+    app: rentalservice
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpservice
+  namespace: ingnum
+  labels:
+    app: phpservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpservice
+  template:
+    metadata:
+      labels:
+        app: phpservice
+    spec:
+      containers:
+        - name: phpservice
+          image: ingnum/phpservice:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpservice
+  namespace: ingnum
+spec:
+  selector:
+    app: phpservice
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP

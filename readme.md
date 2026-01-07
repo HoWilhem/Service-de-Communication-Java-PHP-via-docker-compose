@@ -33,3 +33,11 @@ La directive `depends_on` établit une dépendance de démarrage où le serv
 ### Test du service java:
 
 ![Service java](img/imgJAVA.png)
+
+## Kubernetes
+
+Kubernetes est une plateforme d'orchestration de conteneurs qui automatise le déploiement, la mise à l'échelle et la gestion d'applications conteneurisées. Concepts clés : cluster (ensemble de nœuds), nœuds (machines), pods (unités de déploiement), Deployments (gestion des réplicas et des mises à jour), et Services (exposition réseau stable).
+
+Avec Kubernetes on définit l'état désiré via des manifests YAML (Deployments, Services, ConfigMaps, PersistentVolumes, etc.) puis on l'applique avec `kubectl apply -f <fichier>`. Les opérations courantes : `kubectl get pods`, `kubectl get svc`, `kubectl rollout status deployment/<nom>`.
+
+Ce dépôt contient un manifeste d'exemple dans le dossier `k8s/` (`k8s/deployment.yaml`) que vous pouvez déployer sur un cluster : `kubectl apply -f k8s/deployment.yaml`. Kubernetes gère automatiquement la montée en charge, les redémarrages et les mises à jour progressives (rolling updates), facilitant la production à grande échelle.
