@@ -40,4 +40,4 @@ Kubernetes est une plateforme d'orchestration de conteneurs qui automatise le d�
 
 Avec Kubernetes on définit l'état désiré via des manifests YAML (Deployments, Services, ConfigMaps, PersistentVolumes, etc.) puis on l'applique avec `kubectl apply -f <fichier>`. Les opérations courantes : `kubectl get pods`, `kubectl get svc`, `kubectl rollout status deployment/<nom>`.
 
-Ce dépôt contient un manifeste d'exemple dans le dossier `k8s/` (`k8s/deployment.yaml`) que vous pouvez déployer sur un cluster : `kubectl apply -f k8s/deployment.yaml`. Kubernetes gère automatiquement la montée en charge, les redémarrages et les mises à jour progressives (rolling updates), facilitant la production à grande échelle.
+Vous pouvez déployer sur un cluster : `kubectl apply -f kubernetes.yaml`. Kubernetes gère automatiquement la montée en charge, les redémarrages et les mises à jour progressives (rolling updates), facilitant la production à grande échelle.
